@@ -12,7 +12,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # ...
     sudo apt-get update
     sudo apt-get install -y -q nodejs npm
-    sudo apt-get install -y -q npm nmap sshpass
+    sudo apt-get install -y -q nmap sshpass
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac OSX
     sudo xcode-select --install || true
