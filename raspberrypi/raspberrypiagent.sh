@@ -5,6 +5,7 @@ IP=$1
 PROV_KEY=$2
 
 if [[ -z $(ls /usr/local/bin | grep iofog-agent) ]]; then
+    sudo apt install curl
     curl -sSf https://iofog.org/linux.sh | sh
 fi
 

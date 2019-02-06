@@ -37,7 +37,7 @@ sudo iofog-controller start
 for var in "${!NODE_IPS[@]}"
 do
     NODE_ID=$(sudo iofog-controller iofog add --name "RPI${var}" --fog-type 0 -u ${USER_ID} | grep uuid | awk -F  ":" '{print $2}' | awk '{print substr($0, 2, length($0) - 3)}')
-    PROV_KEY=$(sudo iofog-controller iofog provisioning-key --node-id jNRtTkkg9GXyQDQm4cjNjRLJ36GkzjYC | grep \"key\" | awk '{print $2}' | awk '{print substr($0, 2, length($0) - 3)}')
+    PROV_KEY=$(sudo iofog-controller iofog provisioning-key --node-id "${NODE_ID}" | grep \"key\" | awk '{print $2}' | awk '{print substr($0, 2, length($0) - 3)}')
     sshpass -p raspberry scp ./raspberrypiagent.sh pi@"${NODE_IPS[var]}":~/.
     sshpass -p raspberry ssh -tt pi@"${NODE_IPS[var]}" "~/raspberrypiagent.sh '${IP}' '${PROV_KEY}'; exit"
 done
